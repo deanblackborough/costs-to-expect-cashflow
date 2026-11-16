@@ -32,7 +32,7 @@ Each phase below is a stop point. Finish it, summarise, and wait for the go-ahea
 3. The main totals are income, expenses, then net. Net is worked out per currency, never across currencies.
 4. A received income row stays in the local database (read-only) once pushed. That makes retry after a partial failure safe, and it keeps the rate/quantity/invoice dates, which the API has nowhere to store. Edits after receipt go through the normal API item edit.
 5. Three pricing modes from the start: hourly (rate x hours), daily (rate x days) and fixed total. Fixed total is its own mode, not an override of the other two.
-6. Recurring expenses will be dealt with later. They are still WIP and don't send `transaction_type`, so hide the Recurring entry points for transaction resource types and leave that code alone.
+6. Recurring expenses will be dealt with later. They are still WIP and don't send `transaction_type`, so hide the Recurring entry points for transaction resource types and leave that code alone. The recurring rework is planned in `recurring-expenses.md` (expense-only, and it hides those same entry points), and transaction recurring will build on it afterwards.
 7. **Receiving** lets the user change the amount and the date. The dialog defaults to the invoiced total and today. The amount entered is what goes to the API. There are no partial payments: one income is received once.
 8. **Expected pay date** is picked directly. It is required when an income is marked invoiced and optional on a draft. No payment-terms calculation.
 9. **VAT/tax** is not handled yet and will be added later. Amounts are plain figures. Keep the table easy to extend (no assumptions baked into `total`).
